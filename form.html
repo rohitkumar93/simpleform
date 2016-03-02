@@ -1,0 +1,123 @@
+<html>
+<head>
+<style>
+form {
+pad;
+display:inline;
+}
+input {
+mar=&nbsp;
+display:inline;
+border:solid 1px #E5E5E5;
+}
+input:valid{
+	color:green;}
+
+input:invalid{
+border:solid 1px #DD1037;}
+
+</style>
+</head>
+<body>
+<fieldset>
+<legend>
+My Form
+</legend>
+<form autocomplete="on" method="post" onsubmit="validateform()" name="form">
+<label>
+Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<input type="text" placeholder="name" name="name" ></input><br>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input placeholder="class" name="class" type="text"></input><br/>
+Roll no.:&nbsp;&nbsp;&nbsp;<input placeholder="roll no."  name="rollno" type="text" value></input></br>
+City:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input placeholder="city" name="city" type="text"></input></br>
+Contact:&nbsp;&nbsp;&nbsp;<input placeholder="Contact" name="contact"  type="text"></input></br>
+Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input placeholder="email"  type="email" autocomplete="off"> </input></br>
+Password:<input type="password" placeholder="Password" ></input></br>
+Address:&nbsp;&nbsp;<textarea rows="4" value="address" name="address"  placeholder="name" column="5"></textarea></br>
+Corr. Address<textarea rows="4" value="address1" name="address1"  placeholder="corresponding address" column="5"></textarea></br>
+<input type="checkbox" onclick="same();" >Same as above?</input><br><br>
+DOB:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date"></input><br>
+Country:<div id="id01"><select></></div><!--$$$$$$$$$$$$$$$$$$$$$$$##########################################-->
+<select><option>1</option></br>
+<option>2</option></br>
+<option>3</option></select>Month</br>
+<input type="radio" name="agree" required></input>Yes, I am an idiot.<br>
+<input type="radio" name="agree">No, I am an idiot.</input><br>
+<input type="range" id="a" name="a">150+</input><br>
+<input type="number" id="b" name="b" value="50"></input></br>
+Choose your Favorite game
+<output name="x" for="a  b"></output></br>
+<input list="games"></br>
+<datalist id="games">
+<option value="Dota 2">
+<option value="Metal Gear Solid 5">
+<option value="Witcher 3">
+<option value="Assassin's Creed Brotherhood">
+<option value="Borderlands 2">
+<option value="Quake 4">
+<option value="Dota 2"></datalist><br><br>
+<input type="password">password</input>
+<keygen></keygen>
+Upload your resume:<input type="file" name="file" multiple><br><br>
+<button type="button" onclick="same1();">Check</button>
+<button type="button" onclick="same2();" style="color:white; border:white;">Autofill</button>
+<input type="submit" name="submission" method="post"></input>
+</form>
+</fieldset>
+<script>
+function validateform() {
+    var x = document.forms["form"]["name"].value;
+    if (x == null || x == "") {
+        alert("Name must be filled out");
+		x.validationMessage;
+        return false;
+    }
+}
+function same() {
+var y = document.forms["form"]["address"].value;
+document.forms["form"]["address1"].value = y;
+}
+function same1() {
+    var z = document.forms["form"]["address1"].value;
+	var q = document.forms["form"]["address"].value;
+    if (z == q) {
+        alert("Values are same");
+    }
+	else
+	alert("values are not the same");
+}
+function same2() {
+document.forms["form"]["name"].value = "Rohit Kumar";
+document.forms["form"]["class"].value = "Assassin";
+document.forms["form"]["rollno"].value = "666";
+document.forms["form"]["city"].value = "Gurgaon";
+document.forms["form"]["contact"].value = "9161161166";
+
+}
+</script>
+<script>
+function same3() {//a function which limits the length of name1 by 10 if the value at name is ""India"" anyhow
+var y = document.forms["form"]["id01"].value;
+if(y=="India"){
+document.forms["form"]["contact"].maxLength = 10;
+}
+}
+</script>
+
+
+<div id="id01"></div>
+<script>//a script which calls a json file with country names in it for easier editing and addition. the countries will be listed in  a select box
+function myFunction(arr) {
+    var out = "<select>";
+    var i;
+    for(i = 0; i<arr.length; i++) {
+        out += '<option>' + 
+        arr[i].display + '</option><br>';
+    }
+    document.getElementById("id01").innerHTML = out;
+}
+</script>
+
+<script src="json.json"></script>
+
+</body>
+</html>
